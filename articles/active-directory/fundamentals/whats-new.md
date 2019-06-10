@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/28/2019
+ms.date: 05/23/2019
 ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74767e9d00f630efd2be026c3c3688c816c2ccee
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: e6a66aefec69a0551f85b11a380c90d1915bd776
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66113352"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66474196"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory의 새로운 기능
 
@@ -39,9 +39,207 @@ Azure AD는 지속적인 향상되고 있습니다. 최신 개발 정보를 확�
 
 ---
 
-## <a name="april-2019"></a>2019 년 4 월
+## <a name="may-2019"></a>2019년 5월
 
-### <a name="azure-active-directory-azure-ad-entitlement-management-is-now-available-public-preview"></a>이제 azure Active Directory (Azure AD) 권한 관리를 사용할 수 있습니다 (공개 미리 보기)
+### <a name="service-change-future-support-for-only-tls-12-protocols-on-the-application-proxy-service"></a>서비스 변경 내용: 응용 프로그램 프록시 서비스에서 TLS 1.2 프로토콜만 대 한 지원 되지 않음
+
+**유형:** 변경 계획  
+**서비스 범주:** 앱 프록시  
+**제품 기능:** Access Control
+
+고객을 위한 최고의에서 암호화를 제공 하려면 응용 프로그램 프록시 서비스에서 TLS 1.2 프로토콜만에 대 한 액세스를 제한 했습니다. 이 변경은 점진적으로 롤아웃하는 내용이 표시 되지 않아야 하므로 TLS 1.2 프로토콜을 이미만 사용 하는 고객.
+
+2019 년 8 월 31 일에 TLS 1.0 및 TLS 1.1의 사용 중단 발생 하지만이 변경에 대 한 준비 시간을 볼 수 있도록 추가 사전된 통지를 제공 합니다. 준비 하려면이 변경 해야 사용자가 응용 프로그램 프록시를 통해 게시 된 앱에 액세스를 사용 하 여 클라이언트를 포함 하 여 사용자 클라이언트-서버 및 브라우저-서버 조합, 응용 프로그램에 대 한 연결을 유지 하기 위해 TLS 1.2 프로토콜을 사용 하도록 업데이트 프록시 서비스입니다. 자세한 내용은 [Azure Active Directory에서 응용 프로그램 프록시를 통해 원격 액세스를 위한 온-프레미스 응용 프로그램을 추가 합니다.](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#before-you-begin)합니다.
+
+---
+
+### <a name="use-the-usage-and-insights-report-to-view-your-app-related-sign-in-data"></a>사용량 및 insights 보고서를 사용 하 여 앱 관련 로그인 데이터를 보려면
+
+**유형:** 새 기능  
+**서비스 범주:** 엔터프라이즈 앱  
+**제품 기능:** 모니터링 및 보고
+
+이제는 사용량과 insights 보고서에 사용할 수 있습니다 합니다 **엔터프라이즈 응용 프로그램** 중심 응용 프로그램에 대 한 정보를 포함 하 여 로그인 데이터를 가져오기 위해 Azure 포털의 영역:
+
+- 상위 조직에 대 한 앱 사용
+
+- 가장 많이 실패 한 로그인을 사용 하 여 앱
+
+- 각 앱에 대 한 상위 로그인 오류
+
+이 기능에 대 한 자세한 내용은 참조 하세요. [Azure Active Directory 포털의 사용량 및 insights 보고서](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-usage-insights-report)
+
+---
+
+### <a name="automate-your-user-provisioning-to-cloud-apps-using-azure-ad"></a>사용자가 Azure AD를 사용 하 여 앱을 클라우드로 프로 비전 자동화
+
+**유형:** 새 기능  
+**서비스 범주:** 엔터프라이즈 앱  
+**제품 기능:** 모니터링 및 보고
+
+이러한 새 자습서에 따라 Azure AD 프로 비전 서비스 만들기, 삭제, 자동화를 사용 하 고 다음 클라우드 기반 앱에 대 한 사용자 계정 업데이트:
+
+- [Comeet](https://docs.microsoft.com/azure/active-directory/saas-apps/comeet-recruiting-software-provisioning-tutorial)
+
+- [DynamicSignal](https://docs.microsoft.com/azure/active-directory/saas-apps/dynamic-signal-provisioning-tutorial)
+
+- [KeeperSecurity](https://docs.microsoft.com/azure/active-directory/saas-apps/keeper-password-manager-digitalvault-provisioning-tutorial)
+
+수행할 수 있습니다이 새로운 [Dropbox 자습서](https://docs.microsoft.com/azure/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial), 그룹 개체 프로 비전 하는 방법에 대 한 정보를 제공 하는 합니다.
+
+자동화 된 사용자 계정 프로 비전을 통해 조직의 보안을 강화 하는 방법에 대 한 자세한 내용은 참조 하세요. [Azure AD와 SaaS 응용 프로그램에 사용자 프로 비전 자동화](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)합니다.
+
+---
+
+### <a name="identity-secure-score-is-now-available-in-azure-ad-general-availability"></a>Identity 보안 점수 (일반 공급)를 Azure AD에서 제공 됩니다.
+
+**유형:** 새 기능  
+**서비스 범주:** N/A  
+**제품 기능:** ID 보안 및 보호
+
+이제 모니터링 하 고 본인을 향상 시킬 수 id를 사용 하 여 보안 상태를 Azure AD에서 점수 매기기 기능을 보호 합니다. 점수 기능 사용 하는 데 단일 대시보드에서 보안 하는 id:
+
+- 1에서 223 사이의 점수를 기준으로 하 여 identity 보안 상태를 객관적으로 측정 합니다.
+
+- Id 보안 개선 프로그램에 대 한 계획
+
+- 사용자 보안 개선의 성공 여부를 검토 합니다.
+
+Id 보안 점수 기능에 대 한 자세한 내용은 참조 하세요. [Azure Active Directory에서 identity 보안 점수 란?](https://docs.microsoft.com/azure/active-directory/fundamentals/identity-secure-score)합니다.
+
+---
+
+### <a name="new-app-registrations-experience-is-now-available-general-availability"></a>새 앱 등록 환경을 사용할 수 있습니다 (일반 공급) 되었습니다.
+
+**유형:** 새 기능  
+**서비스 범주:** 인증(로그인)  
+**제품 기능:** 개발자 환경
+
+새 [앱 등록](https://aka.ms/appregistrations) 환경은 이제 일반적 가용성입니다. 이 새로운 환경은 익숙한 응용 프로그램 등록 포털 및 Azure portal에서 모든 주요 기능을 포함 하 고 통해 모아 개선:
+
+- **더 나은 앱 관리** 다른 포털에서 앱을 표시 하는 대신 이제 한곳에서 모든 앱을 볼 수 있습니다.
+
+- **앱 등록을 간소화 합니다.** 개선 된 사용 권한 선택 환경이 개선 된 탐색 경험을 통해 쉽습니다 이제 등록 및 앱을 관리 합니다.
+
+- **자세한 정보입니다.** 빠른 시작 가이드 및 기타 정보를 포함 하 여 앱에 대 한 자세한 세부 정보를 찾을 수 있습니다.
+
+자세한 내용은 [Microsoft id 플랫폼](https://docs.microsoft.com/azure/active-directory/develop/) 및 [앱 등록 환경에 출시 되었습니다!](https://developer.microsoft.com/identity/blogs/new-app-registrations-experience-is-now-generally-available/) 블로그 공지 합니다.
+
+---
+
+### <a name="new-capabilities-available-in-the-risky-users-api-for-identity-protection"></a>Id 보호에 대 한 위험한 사용자 API에서 사용할 수 있는 새로운 기능
+
+**유형:** 새 기능  
+**서비스 범주:** Identity Protection  
+**제품 기능:** ID 보안 및 보호
+
+우리는 이제 사용할 수 있습니다 위험한 사용자 API 사용자 위험 기록을 검색, 위험한 사용자를 해제 하 고 손상 된 대로 사용자를 확인 가능해졌습니다. 이 변경을 사용 하면 보다 효율적으로 사용자의 위험 상태를 업데이트 하 고 해당 위험 기록 이해 하도록 도와줍니다.
+
+자세한 내용은 참조는 [위험한 사용자 API 참조 설명서](https://docs.microsoft.com/graph/api/resources/riskyuser?view=graph-rest-beta)합니다.
+
+---
+
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---may-2019"></a>있는 신규 페더레이션 앱에서 Azure AD 앱 갤러리-2019 년 5 월
+
+**유형:** 새 기능  
+**서비스 범주:** 엔터프라이즈 앱  
+**제품 기능:** 타사 통합
+
+월 2019에 앱 갤러리에 페더레이션이 포함 된 이러한 21 새 앱 지원 추가 했습니다.
+
+[Freedcamp](https://docs.microsoft.com/azure/active-directory/saas-apps/freedcamp-tutorial), [실제 링크](https://docs.microsoft.com/azure/active-directory/saas-apps/real-links-tutorial), [Kianda](https://app.kianda.com/sso/OpenID/AzureAD/)를 [간단한 로그인](https://docs.microsoft.com/azure/active-directory/saas-apps/simple-sign-tutorial)를 [Braze](https://docs.microsoft.com/azure/active-directory/saas-apps/braze-tutorial)를 [Displayr](https://docs.microsoft.com/azure/active-directory/saas-apps/displayr-tutorial), [Templafy](https://docs.microsoft.com/azure/active-directory/saas-apps/templafy-tutorial), [Marketo Sales 참여](https://toutapp.com/login)합니다 [ACLP](https://docs.microsoft.com/azure/active-directory/saas-apps/aclp-tutorial)를 [OutSystems](https://docs.microsoft.com/azure/active-directory/saas-apps/outsystems-tutorial), [Meta4 전역 HR](https://docs.microsoft.com/azure/active-directory/saas-apps/meta4-global-hr-tutorial), [퀀텀 Workplace](https://docs.microsoft.com/azure/active-directory/saas-apps/quantum-workplace-tutorial)합니다 [코발트](https://docs.microsoft.com/azure/active-directory/saas-apps/cobalt-tutorial), [webMethods API 클라우드](https://docs.microsoft.com/azure/active-directory/saas-apps/webmethods-integration-cloud-tutorial), [RedFlag](https://pocketstop.com/redflag/), [Whatfix](https://docs.microsoft.com/azure/active-directory/saas-apps/whatfix-tutorial), [제어](https://docs.microsoft.com/azure/active-directory/saas-apps/control-tutorial)를 [JOBHUB](https://docs.microsoft.com/azure/active-directory/saas-apps/jobhub-tutorial)를 [NEOGOV](https://docs.microsoft.com/azure/active-directory/saas-apps/neogov-tutorial)를 [Foodee](https://docs.microsoft.com/azure/active-directory/saas-apps/foodee-tutorial), [MyVR](https://docs.microsoft.com/azure/active-directory/saas-apps/myvr-tutorial)
+
+앱에 대한 자세한 내용은 [Azure Active Directory와 SaaS 애플리케이션 통합](https://aka.ms/appstutorial)을 참조하세요. Azure AD 앱 갤러리에 애플리케이션을 나열하는 방법에 대한 자세한 내용은 [Azure Active Directory 애플리케이션 갤러리에 애플리케이션 나열](https://aka.ms/azureadapprequest)을 참조하세요.
+
+---
+
+### <a name="improved-groups-creation-and-management-experiences-in-the-azure-ad-portal"></a>Azure AD 포털의 향상 된 그룹 만들기 및 관리 환경
+
+**유형:** 새 기능  
+**서비스 범주:** 그룹 관리  
+**제품 기능:** 협업
+
+Azure AD 포털의 그룹 관련 경험을 개선을 했습니다. 이러한 향상 된이 기능에는 관리자가 추가 만들기 옵션을 제공 하 고 그룹 목록, 멤버 목록에 더 효율적으로 관리할 수 있습니다.
+
+향상된 기능은 다음과 같습니다.
+
+- 기본 멤버 자격 유형 및 그룹 유형을 필터링 합니다.
+
+- 원본 및 전자 메일 주소와 같은 새 열을 추가 합니다.
+
+- 다중 선택 그룹, 멤버 및 소유자 수 있는 기능 쉽게 삭제를 나열합니다.
+
+- 전자 메일 주소를 선택 하 고 그룹을 만들 때 소유자를 추가 하는 기능.
+
+자세한 내용은 [기본 그룹을 만들고 Azure Active Directory를 사용 하 여 멤버를 추가](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal)합니다.
+
+---
+
+### <a name="configure-a-naming-policy-for-office-365-groups-in-azure-ad-portal-general-availability"></a>Azure AD 포털 (일반 공급)에서 Office 365 그룹 명명 정책 구성
+
+**유형:** 변경된 기능  
+**서비스 범주:** 그룹 관리  
+**제품 기능:** 협업
+
+관리자 Azure AD 포털을 사용 하 여 Office 365 그룹에 대 한 명명 정책 이제 구성할 수 있습니다. 이 변경은 조직의 사용자가 생성 하거나 편집한 Office 365 그룹에 대 한 일관성 있는 명명 규칙을 적용할 수 있습니다.
+
+두 가지 방법으로 Office 365 그룹 명명 정책을 구성할 수 있습니다.
+
+- 접두사 또는 접미사는 그룹 이름에 자동으로 추가 되는 정의 합니다.
+
+- 그룹 이름 (예: "CEO, Payroll, HR")에 허용 되지 않는 조직에 대 한 차단 된 단어의 사용자 지정된 된 집합을 업로드 합니다.
+
+자세한 내용은 [Office 365 그룹 명명 정책 적용](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-naming-policy)합니다.
+
+---
+
+### <a name="microsoft-graph-api-endpoints-are-now-available-for-azure-ad-activity-logs-general-availability"></a>Microsoft Graph API 끝점의 Azure AD 활동 로그 (일반 공급) 제공 됩니다.
+
+**유형:** 변경된 기능  
+**서비스 범주:** 보고  
+**제품 기능:** 모니터링 및 보고
+
+Azure AD 활동에 대 한 Microsoft Graph API 끝점 지원의 일반 공급 발표를 로그 합니다. 이 릴리스에서 사용 하 여 Azure AD의 버전 1.0 감사 로그, 로그인 로그 뿐만 아니라 Api 이제 수 있습니다.
+
+자세한 내용은 [Azure AD 감사 로그 API 개요](https://docs.microsoft.com/graph/api/resources/azure-ad-auditlog-overview?view=graph-rest-1.0)합니다.
+
+---
+
+### <a name="administrators-can-now-use-conditional-access-for-the-combined-registration-process-public-preview"></a>관리자가 결합 된 등록 프로세스 (공개 미리 보기)에 대 한 조건부 액세스를 이제 사용할 수 있습니다.
+
+**유형:** 새 기능  
+**서비스 범주:** 조건부 액세스  
+**제품 기능:** ID 보안 및 보호  
+
+관리자 결합 된 등록 페이지 사용에 대 한 조건부 액세스 정책을 만들 수 있습니다. 여기에 등록을 허용 하도록 정책을 적용 합니다.
+
+- 사용자가 신뢰할 수 있는 네트워크에 연결 되어 있습니다.
+
+- 사용자가 로그인 위험이 적습니다.
+
+- 사용자가 관리 되는 장치에 있습니다.
+
+- 사용자는 조직의 사용 약관 (TOU)에 동의합니다.
+
+조건부 액세스 및 암호 재설정에 대 한 자세한 내용은 참조는 [MFA를 결합 하는 Azure AD에 대 한 조건부 액세스 및 암호 재설정 등록 환경을 블로그 게시물](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Conditional-access-for-the-Azure-AD-combined-MFA-and-password/ba-p/566348)합니다. 결합 된 등록 프로세스에 대 한 조건부 액세스 정책에 대 한 자세한 내용은 참조 하세요. [결합 된 등록에 대 한 조건부 액세스 정책을](https://docs.microsoft.com/azure/active-directory/authentication/howto-registration-mfa-sspr-combined#conditional-access-policies-for-combined-registration)합니다. 기능 사용의 Azure AD 용어에 대 한 자세한 내용은 참조 [Azure Active Directory 사용 약관 기능](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use)합니다.
+
+---
+
+## <a name="april-2019"></a>2019년 4월
+
+### <a name="new-azure-ad-threat-intelligence-detection-is-now-available-in-refreshed-azure-ad-identity-protection"></a>새 Azure AD 위협 인텔리전스 검색 새로 고침된의 Azure AD Id 보호에서 제공 됩니다.
+
+**유형:** 새 기능  
+**서비스 범주:** Azure AD Identity Protection  
+**제품 기능:** ID 보안 및 보호
+
+이제 azure AD 위협 인텔리전스 검색 새로 고침된 하는 Azure AD Id 보호에서 제공 됩니다. 이 새로운 기능 하는 특정 사용자에 대 한 일반적이 지 않습니다. 또는 Microsoft의 내부 및 외부 위협 인텔리전스를 기반으로 하는 알려진된 공격 패턴과 일치 하는 사용자 활동을 나타낼 수 있습니다.
+
+새로 고친된 버전의 Azure AD Id 보호에 대 한 자세한 내용은 참조는 [네 가지 주요 Azure AD Id 보호 기능이 공개 미리 보기로 제공 됩니다](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Four-major-Azure-AD-Identity-Protection-enhancements-are-now-in/ba-p/326935) 블로그 및 [Azure Active Directory 란 Id 보호 (새로 고침된)?](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-v2) 문서입니다. Azure AD 위협 인텔리전스 검색에 대 한 자세한 내용은 참조는 [Azure Active Directory Id 보호 위험 이벤트](https://docs.microsoft.com/azure/active-directory/identity-protection/risk-events-reference#azure-ad-threat-intelligence) 문서.
+
+---
+
+### <a name="azure-ad-entitlement-management-is-now-available-public-preview"></a>Azure AD 권한 관리는 이제 사용할 수 있습니다 (공개 미리 보기)
 
 **유형:** 새 기능  
 **서비스 범주:** ID 거버넌스  
@@ -57,7 +255,7 @@ Azure AD 권한 관리, 이제 공개 미리 보기로 제공에서 하는 데 �
 **서비스 범주:** 그룹 관리  
 **제품 기능:** 협업
 
-관리자 Azure AD 포털을 사용 하 여 Office 365 그룹에 대 한 명명 정책 이제 구성할 수 있습니다. 이 변경은 조직의 사용자가 생성 하거나 편집한 Office 365 그룹에 대 한 일관성 있는 명명 규칙을 적용할 수 있습니다. 
+관리자 Azure AD 포털을 사용 하 여 Office 365 그룹에 대 한 명명 정책 이제 구성할 수 있습니다. 이 변경은 조직의 사용자가 생성 하거나 편집한 Office 365 그룹에 대 한 일관성 있는 명명 규칙을 적용할 수 있습니다.
 
 두 가지 방법으로 Office 365 그룹 명명 정책을 구성할 수 있습니다.
 
@@ -125,7 +323,7 @@ Azure AD 권한 관리, 이제 공개 미리 보기로 제공에서 하는 데 �
 **서비스 범주:** AD Sync  
 **제품 기능:** 플랫폼
 
-Azure AD Connect 잠재적으로 일부 고객은 새 전자 메일 보낸 사람으로 표시는 전자 메일 경고 시스템을 전환 하는 중입니다. 이 해결 하려면 추가 해야 `azure-noreply@microsoft.com` 조직의 허용 목록에 없게 계속 Office 365, Azure 또는 동기화 서비스에서 중요 한 경고를 수신 합니다.
+Azure AD Connect 잠재적으로 일부 고객은 새 전자 메일 보낸 사람으로 표시는 전자 메일 경고 시스템을 전환 하는 중입니다. 이 해결 하려면 추가 해야 `azure-noreply@microsoft.com` 를 조직의 허용 목록 또는 계속 Office 365, Azure 또는 동기화 서비스에서 중요 한 경고를 수신할 수 없습니다.
 
 ---
 
@@ -289,7 +487,7 @@ Azure AD single sign-on 및 조건부 액세스에 대 한 새로운 지원 제�
 **서비스 범주:** 사용 약관  
 **제품 기능:** 거버넌스
 
-검토 및 모바일 장치에서 사용 약관에 동의 하는 방법을 개선 하기 위해 사용 하 여 환경의 기존 약관 업데이트 했습니다. 이제 확대 / 축소, 돌아가서, 정보를 다운로드 하 수 하이퍼링크를 선택 합니다. 업데이트 된 사용 약관에 대 한 자세한 내용은 참조 하세요. [Azure Active Directory 사용 약관 기능](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use#what-terms-of-use-looks-like-for-users)합니다.
+기존 약관 검토 및 모바일 장치에서 사용 약관에 동의 하는 방법을 개선 하기 위해 사용 하 여 환경을 업데이트 했습니다. 이제 확대 / 축소, 돌아가서, 정보를 다운로드 하 수 하이퍼링크를 선택 합니다. 업데이트 된 사용 약관에 대 한 자세한 내용은 참조 하세요. [Azure Active Directory 사용 약관 기능](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use#what-terms-of-use-looks-like-for-users)합니다.
 
 ---
 
@@ -376,10 +574,10 @@ SAML 토큰 암호화를 구성 하는 방법에 대 한 자세한 내용은 참
 **유형:** 변경된 기능  
 **서비스 범주:** 셀프 서비스 암호 재설정  
 **제품 기능:** 사용자 인증
- 
+
 고객 피드백에 대 한 응답을 개선 했습니다 결합 된 MFA/SSPR 등록 미리 보기 환경은 사용자의 MFA 및 SSPR에 대 한 해당 보안 정보를 보다 신속 하 게 등록 하도록 지원 합니다. 
 
-**현재 사용자에 대 한 향상 된 환경을 설정 하려면 다음이 단계를 수행 합니다.**
+**설정 하려면 사용자에 대 한 향상 된 경험에이 단계를 따라 현재:**
 
 1. 전역 관리자 또는 사용자 관리자, Azure portal에 로그인 이동할 **Azure Active Directory > 사용자 설정 > 액세스 패널 미리 보기 기능에 대 한 설정을 관리**합니다. 
 
@@ -658,40 +856,40 @@ Microsoft 인증자 앱을 사용하여 암호를 재설정하는 방법에 대�
 
 ---
 
-### <a name="administrators-can-require-users-to-accept-a-terms-of-use-on-each-device"></a>관리자는 각 디바이스에서 사용 약관에 동의하도록 사용자에게 요구할 수 있습니다.
+### <a name="administrators-can-require-users-to-accept-a-terms-of-use-on-each-device"></a>관리자는 사용자가 각 장치에서 사용 약관을 수락 하도록 요구할 수 있습니다.
 
 **유형:** 새 기능  
 **서비스 범주:** 사용 약관  
 **제품 기능:** 거버넌스
  
-이제 관리자는 **모든 디바이스에서 사용자 동의 요구** 옵션을 켜서 사용자가 테넌트에서 사용 중인 모든 디바이스에서 사용 약관에 동의하도록 요구할 수 있습니다.
+관리자 수 이제 설정 합니다 **사용자가 모든 장치에서 동의 하도록 요구** 사용자가 테 넌 트에서 사용 하 든 모든 장치에서 사용 약관에 동의 해야 하는 옵션입니다.
 
-자세한 내용은 [Azure Active Directory 사용 약관 기능의 디바이스별 사용 약관 섹션](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use#per-device-terms-of-use)을 참조하세요.
+자세한 내용은 참조는 [장치별 약관은 Azure Active Directory 사용 약관 기능 사용 섹션](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use#per-device-terms-of-use)합니다.
 
 ---
 
-### <a name="administrators-can-configure-a-terms-of-use-to-expire-based-on-a-recurring-schedule"></a>관리자는 되풀이 일정에 따라 만료되도록 사용 약관을 구성할 수 있습니다.
+### <a name="administrators-can-configure-a-terms-of-use-to-expire-based-on-a-recurring-schedule"></a>관리자의 되풀이 일정에 따라 만료를 사용 하 여 사용 약관을 구성할 수 있습니다.
 
 **유형:** 새 기능  
 **서비스 범주:** 사용 약관  
 **제품 기능:** 거버넌스
  
 
-이제 관리자는 **콘텐츠 만료** 옵션을 켜서 지정된 되풀이 일정에 따라 모든 사용자에 대해 사용 약관이 만료되도록 설정할 수 있습니다. 일정은 매년, 6개월마다, 매분기 또는 매월일 수 있습니다. 사용 약관 만료 된 후 사용자가 다시 수락 해야 합니다.
+관리자 켤 수는 **동의 만료** 모든 지정 된 되풀이 일정에 따라 사용자에 대 한 만료 사용 약관을 확인 하는 옵션입니다. 일정은 매년, 6개월마다, 매분기 또는 매월일 수 있습니다. 사용 약관 만료 된 후 사용자가 다시 수락 해야 합니다.
 
-자세한 내용은 [Azure Active Directory 사용 약관 기능의 사용 약관 추가 섹션](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use#add-terms-of-use)을 참조하세요.
+자세한 내용은 참조는 [는 Azure Active Directory 사용 약관 기능 섹션 사용 약관을 추가](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use#add-terms-of-use)합니다.
 
 ---
 
-### <a name="administrators-can-configure-a-terms-of-use-to-expire-based-on-each-users-schedule"></a>관리자는 각 사용자의 일정에 따라 만료되도록 사용 약관을 구성할 수 있습니다.
+### <a name="administrators-can-configure-a-terms-of-use-to-expire-based-on-each-users-schedule"></a>관리자는 각 사용자의 일정에 따라 만료 사용 약관을 구성할 수 있습니다.
 
 **유형:** 새 기능  
 **서비스 범주:** 사용 약관  
 **제품 기능:** 거버넌스
 
-이제 관리자는 사용자가 사용 약관에 다시 동의해야 하는 기간을 지정할 수 있습니다. 예를 들어 관리자는 사용자가 90일마다 사용 약관에 다시 동의해야 하도록 지정할 수 있습니다.
+기간을 지정 하는 사용자 사용 약관을 다시 수락 해야 합니다. 예를 들어 관리자는 사용자가 약관 90 일 마다 다시 수락 해야 합니다는 지정할 수 있습니다.
 
-자세한 내용은 [Azure Active Directory 사용 약관 기능의 사용 약관 추가 섹션](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use#add-terms-of-use)을 참조하세요.
+자세한 내용은 참조는 [는 Azure Active Directory 사용 약관 기능 섹션 사용 약관을 추가](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use#add-terms-of-use)합니다.
  
 ---
 
@@ -740,59 +938,5 @@ PIM 및 사용 가능한 메일 알림에 대한 자세한 내용은 [PIM의 메
 [CoreStack](https://cloud.corestack.io/site/login), [HubSpot](https://docs.microsoft.com/azure/active-directory/saas-apps/HubSpot-tutorial), [GetThere](https://docs.microsoft.com/azure/active-directory/saas-apps/getthere-tutorial), [Gra-Pe](https://docs.microsoft.com/azure/active-directory/saas-apps/grape-tutorial), [eHour](https://getehour.com/try-now), [Consent2Go](https://docs.microsoft.com/azure/active-directory/saas-apps/Consent2Go-tutorial), [Appinux](https://docs.microsoft.com/azure/active-directory/saas-apps/appinux-tutorial), [DriveDollar](https://azuremarketplace.microsoft.com/marketplace/apps/savitas.drivedollar-azuread?tab=Overview), [Useall](https://docs.microsoft.com/azure/active-directory/saas-apps/useall-tutorial), [Infinite Campus](https://docs.microsoft.com/azure/active-directory/saas-apps/infinitecampus-tutorial), [Alaya](https://alayagood.com/en/demo/), [HeyBuddy](https://docs.microsoft.com/azure/active-directory/saas-apps/heybuddy-tutorial), [Wrike SAML](https://docs.microsoft.com/azure/active-directory/saas-apps/wrike-tutorial), [Drift](https://docs.microsoft.com/azure/active-directory/saas-apps/drift-tutorial), [Zenegy for Business Central 365](https://accounting.zenegy.com/), [Everbridge Member Portal](https://docs.microsoft.com/azure/active-directory/saas-apps/everbridge-tutorial), [IDEO](https://profile.ideo.com/users/sign_up), [Ivanti Service Manager(ISM)](https://docs.microsoft.com/azure/active-directory/saas-apps/ivanti-service-manager-tutorial), [Peakon](https://docs.microsoft.com/azure/active-directory/saas-apps/peakon-tutorial), [Allbound SSO](https://docs.microsoft.com/azure/active-directory/saas-apps/allbound-sso-tutorial), [Plex Apps - Classic Test](https://test.plexonline.com/signon), [Plex Apps – Classic](https://www.plexonline.com/signon), [Plex Apps - UX Test](https://test.cloud.plex.com/sso), [Plex Apps – UX](https://cloud.plex.com/sso), [Plex Apps – IAM](https://accounts.plex.com/), [CRAFTS - Childcare Records, Attendance, & Financial Tracking System](https://getcrafts.ca/craftsregistration) 
 
 앱에 대한 자세한 내용은 [Azure Active Directory와 SaaS 애플리케이션 통합](https://aka.ms/appstutorial)을 참조하세요. Azure AD 앱 갤러리에 애플리케이션을 나열하는 방법에 대한 자세한 내용은 [Azure Active Directory 애플리케이션 갤러리에 애플리케이션 나열](https://aka.ms/azureadapprequest)을 참조하세요.
-
----
-
-## <a name="october-2018"></a>2018년 10월
-
-### <a name="azure-ad-logs-now-work-with-azure-log-analytics-public-preview"></a>Azure AD 로그는 이제 Azure Log Analytics(공개 미리 보기)에서 사용됩니다.
-
-**유형:** 새 기능  
-**서비스 범주:** 보고  
-**제품 기능:** 모니터링 및 보고
-
-이제 Azure Log Analytics에 Azure AD 로그를 전달할 수 있게 되었습니다. 많은 요청이 있었던 이 기능은 인프라를 모니터링하는 데 도움이 줄 뿐만 아니라 비즈니스, 작업 및 보안을 위해 분석에 보다 쉽게 액세스할 수 있도록 합니다. 자세한 내용은 [Azure Active Directory Activity logs in Azure Log Analytics now available](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-Active-Directory-Activity-logs-in-Azure-Log-Analytics-now/ba-p/274843)(이제 Azure Log Analytics에서 Azure Active Directory 활동 로그를 사용할 수 있음) 블로그를 참조하세요.
-
----
-
-### <a name="new-federated-apps-available-in-azure-ad-app-gallery---october-2018"></a>Azure AD 앱 갤러리에서 사용할 수 있는 새로 페더레이션된 앱 - 2018년 10월
-
-**유형:** 새 기능  
-**서비스 범주:** 엔터프라이즈 앱  
-**제품 기능:** 타사 통합
- 
-2018년 10월에 페더레이션이 지원되는 다음과 같은 신규 앱 14개가 앱 갤러리에 추가되었습니다.
-
-[My Award Points](https://docs.microsoft.com/azure/active-directory/saas-apps/myawardpoints-tutorial), [Vibe HCM](https://docs.microsoft.com/azure/active-directory/saas-apps/vibehcm-tutorial), ambyint, [MyWorkDrive](https://docs.microsoft.com/azure/active-directory/saas-apps/myworkdrive-tutorial), [BorrowBox](https://docs.microsoft.com/azure/active-directory/saas-apps/borrowbox-tutorial), Dialpad, [ON24 Virtual Environment](https://docs.microsoft.com/azure/active-directory/saas-apps/on24-tutorial), [RingCentral](https://docs.microsoft.com/azure/active-directory/saas-apps/ringcentral-tutorial), [Zscaler Three](https://docs.microsoft.com/azure/active-directory/saas-apps/zscaler-three-tutorial), [Phraseanet](https://docs.microsoft.com/azure/active-directory/saas-apps/phraseanet-tutorial), [Appraisd](https://docs.microsoft.com/azure/active-directory/saas-apps/appraisd-tutorial), [Workspot Control](https://docs.microsoft.com/azure/active-directory/saas-apps/workspotcontrol-tutorial), [Shuccho Navi](https://docs.microsoft.com/azure/active-directory/saas-apps/shucchonavi-tutorial), [Glassfrog](https://docs.microsoft.com/azure/active-directory/saas-apps/glassfrog-tutorial)
-
-앱에 대한 자세한 내용은 [Azure Active Directory와 SaaS 애플리케이션 통합](https://aka.ms/appstutorial)을 참조하세요. Azure AD 앱 갤러리에 애플리케이션을 나열하는 방법에 대한 자세한 내용은 [Azure Active Directory 애플리케이션 갤러리에 애플리케이션 나열](https://aka.ms/azureadapprequest)을 참조하세요.
-
----
-
-### <a name="azure-ad-domain-services-email-notifications"></a>Azure AD Domain Services 이메일 알림
-
-**유형:** 새 기능  
-**서비스 범주:** Azure AD Domain Services  
-**제품 기능:** Azure AD Domain Services
-
-Azure AD Domain Services는 관리되는 도메인의 구성 오류 또는 문제점에 대한 경고를 Azure Portal에 제공합니다. 이러한 경고에는 지원 서비스에 문의하지 않고 문제를 해결할 수 있는 단계별 가이드가 포함됩니다.
-
-10월부터, 관리되는 도메인에 대한 알림 설정을 사용자 지정할 수 있으므로 새 경고가 발생할 때 지정된 사용자 그룹으로 이메일이 전송됩니다. 따라서 포털에서 업데이트를 지속적으로 확인할 필요가 없습니다.
-
-자세한 내용은 [Azure AD Domain Services의 알림 설정](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-notifications)을 참조하세요.
-
----
-
-### <a name="azure-ad-portal-supports-using-the-forcedelete-domain-api-to-delete-custom-domains"></a>Azure AD 포털에서는 ForceDelete 도메인 API를 사용하여 사용자 지정 도메인을 삭제하도록 지원합니다. 
-
-**유형:** 변경된 기능  
-**서비스 범주:** 디렉터리 관리  
-**제품 기능:** 디렉터리
-
-이제 사용자, 그룹 및 앱과 같은 참조의 이름을 사용자 지정 도메인 이름(contoso.com)에서 초기 기본 도메인 이름(contoso.onmicrosoft.com)으로 비동기식으로 다시 바꾸는 방식으로, ForceDelete 도메인 API를 통해 사용자 지정 도메인 이름을 삭제할 수 있습니다.
-
-이러한 변경을 통해 조직이 더 이상 해당 이름을 사용하지 않는 경우 또는 다른 Azure AD와 해당 도메인 이름을 사용해야 하는 경우, 사용자 지정 도메인 이름을 보다 신속하게 삭제할 수 있습니다.
-
-자세한 내용은 [사용자 지정 도메인 이름 삭제](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-manage#delete-a-custom-domain-name)를 참조하세요.
 
 ---

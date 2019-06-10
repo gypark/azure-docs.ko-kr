@@ -72,7 +72,7 @@ ms.locfileid: "65964032"
 
 ![세부 정보로 이동 단추 스크린샷](media/app-map/go-to-details.png)
 
-![종단 간 트랜잭션 세부 정보 스크린샷](media/app-map/end-to-end-transaction.png)
+![엔드투엔드 트랜잭션 세부 정보 스크린샷](media/app-map/end-to-end-transaction.png)
 
 ### <a name="view-in-analytics"></a>Analytics에서 보기
 
@@ -181,7 +181,7 @@ appInsights.defaultClient.addTelemetryProcessor(envelope => {
 });
 ```
 
-### <a name="java"></a>자바
+### <a name="java"></a>Java
 
 Application Insights Spring Boot 스타터에서 Spring Boot를 사용하는 경우 application.properties 파일에서 애플리케이션에 대한 사용자 지정 이름을 설정하도록 변경하기만 하면 됩니다.
 

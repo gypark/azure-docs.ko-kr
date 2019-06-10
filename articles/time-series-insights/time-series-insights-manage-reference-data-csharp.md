@@ -4,20 +4,20 @@ description: 이 문서에서는 C#(c-sharp) .NET 언어로 작성된 사용자 
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
 ms.reviewer: jasonh, kfile, anshan
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: a8bd4e02b03a20e348feb2d6c9424f5eb6cf5f9e
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 50368175fbe563d5685f17e96dd41251a0494afd
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510043"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66728986"
 ---
 # <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>사용 하 여 Azure Time Series Insights 환경에 대 한 GA 참조 데이터를 관리 합니다.C#
 
@@ -36,7 +36,7 @@ ms.locfileid: "65510043"
 1. 샘플 코드를 편집하고 코드 시작 부분의 **#DUMMY#** 에 지정된 예제 상수를 바꿉니다.
 
 > [!NOTE]
-> GA 샘플 코드를 볼 [ https://github.com/Azure-Samples/Azure-Time-Series-Insights ](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-ga-preview-sample)합니다.
+> GA 샘플 코드를 볼 [ https://github.com/Azure-Samples/Azure-Time-Series-Insights ](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample)합니다.
 
 ## <a name="project-dependencies"></a>프로젝트 종속성
 

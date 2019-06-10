@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 05/01/2019
+ms.date: 06/04/2019
 ms.author: juliako
-ms.openlocfilehash: 8f50188480b963d13460c79175ea6972d3e68f6a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: e34e0f9fee1d09e66dcdd5069e800dc1f3f750cb
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153074"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688656"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 릴리스 정보
 
@@ -34,14 +34,35 @@ ms.locfileid: "65153074"
 
 자세한 내용은 [Media Services v2에서 v3로 이동하기 위한 마이그레이션 지침](migrate-from-v2-to-v3.md#known-issues)을 참조하세요.
 
-## <a name="may-2019"></a>2019 년 5 월
+## <a name="may-2019"></a>2019년 5월
+
+### <a name="azure-monitor-support-for-media-services-diagnostic-logs-and-metrics"></a>Media Services 진단 로그 및 메트릭 용 azure 모니터링 지원
+
+이제 Media Services에서 원격 분석 데이터 emmited 보려는 Azure Monitor를 사용할 수 있습니다.
+
+* Azure Monitor 진단 로그를 사용 하 여 Media Services 키 배달 끝점에서 전송 요청을 모니터링 합니다. 
+* Media Services에서 내보내는 메트릭 모니터링 [스트리밍 끝점](streaming-endpoint-concept.md)합니다.   
+
+자세한 내용은 참조 하세요 [Media Services 모니터링 메트릭 및 진단 로그](media-services-metrics-diagnostic-logs.md)합니다.
+
+### <a name="multi-audio-tracks-support-in-dynamic-packaging"></a>동적 패키징에서 다중 오디오 트랙을 지원합니다. 
+
+여러 코덱 및 언어를 사용 하 여 여러 오디오 트랙을 포함 하는 자산을 스트리밍할 때 [동적 패키징](dynamic-packaging-overview.md) HLS 출력에 대 한 다중 오디오 트랙 이제 (버전 4 이상).
+
+### <a name="korea-regional-pair-is-open-for-media-services"></a>한국 지역 쌍은 Media Services에 대 한 열기 
+
+Media Services는 이제 한국 중부 및 한국 남부 지역에서 사용할 수 있습니다. 
+
+자세한 내용은 [클라우드와 Media Services v3 존재 하는 지역](azure-clouds-regions.md)합니다.
 
 ### <a name="performance-improvements"></a>성능 개선
+
+Media Services 성능 향상을 포함 하는 추가 업데이트 합니다.
 
 * 처리를 위해 지원 되는 최대 파일 크기 업데이트 되었습니다. 하세요 [할당량 및 제한 사항](limits-quotas-constraints.md)합니다.
 * [인코딩 속도 향상](media-reserved-units-cli-how-to.md#choosing-between-different-reserved-unit-types)합니다.
 
-## <a name="april-2019"></a>2019 년 4 월
+## <a name="april-2019"></a>2019년 4월
 
 ### <a name="new-presets"></a>새 사전 설정
 
@@ -52,7 +73,7 @@ ms.locfileid: "65153074"
 
 Dolby Atmos. 지원 이제 동적 패키징 자세한 내용은 [오디오 코덱 동적 패키징에서 지원](dynamic-packaging-overview.md#audio-codecs-supported-by-dynamic-packaging)합니다.
 
-이제 스트리밍 로케이터가 만들어집니다를 적용할 자산 또는 계정 필터 목록을 지정할 수 있습니다. 자세한 내용은 [스트리밍 로케이터를 사용 하 여 필터를 연결](filters-concept.md#associate-filters-with-streaming-locator)합니다.
+이제 스트리밍 로케이터가 만들어집니다를 적용할 자산 또는 계정 필터 목록을 지정할 수 있습니다. 자세한 내용은 [스트리밍 로케이터를 사용 하 여 필터를 연결](filters-concept.md#associating-filters-with-streaming-locator)합니다.
 
 ## <a name="february-2019"></a>2019년 2월
 
@@ -163,7 +184,7 @@ Media Services v3에 지원되는 언어: .NET Core, Java, Node.js, Ruby, Typesc
 
 다음과 같은 라이브 인코딩 업데이트가 도입되었습니다.
 
-- 라이브에 대한 짧은 대기 시간(종단간 10초)
+- 라이브에 대한 짧은 대기 시간(엔드투엔드 10초).
 - RTMP 지원 향상(향상된 안정성 및 더 많은 소스 인코더 지원)
 - RTMPS 보안 수집
 
@@ -215,7 +236,7 @@ Media Services v3 CLI 또는 API를 통해 9월 28일에서 10월 12일 사이�
 
 * 작업을 제출할 때는 HTTPS URL, SAS URL 또는 Azure Blob Storage에 있는 파일의 경로를 사용하여 원본 비디오를 수집하도록 지정할 수 있습니다. 현재 AMS v3은 HTTPS URL을 통한 청크 분할 전송 인코딩을 지원하지 않습니다.
 
-## <a name="ask-questions-give-feedback-get-updates"></a>질문, 의견, 업데이트 받기
+## <a name="ask-questions-give-feedback-get-updates"></a>질문, 피드백 제공, 업데이트 받기
 
 [Azure Media Services 커뮤니티](media-services-community.md) 문서를 체크 아웃하여 다양한 방법으로 질문을 하고, 피드백을 제공하고, Media Services에 대한 업데이트를 가져올 수 있습니다.
 

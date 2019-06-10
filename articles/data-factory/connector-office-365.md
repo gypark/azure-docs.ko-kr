@@ -12,20 +12,21 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: jingwang
-ms.openlocfilehash: 9ca3cbb1ef46c7fe53b6b16bda40ebef245613f3
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: 1a8d622aa280794d9a4d6fe7320ddcc21ac044f4
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65415651"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475658"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory"></a>Office 365에서 Azure Data Factory를 사용 하 여 Azure로 데이터 복사
 
-Azure Data Factory를 사용하면 Office 365 테넌트의 풍부한 조직 데이터를 확장 가능한 방식으로 Azure로 가져와서 분석 애플리케이션을 빌드하고 이러한 중요 데이터 자산을 기반으로 인사이트를 추출할 수 있습니다. Privileged Access Management와 통합하면 Office 365의 큐레이팅된 중요한 데이터에 대한 보안 액세스 제어가 가능합니다.  Microsoft Graph 데이터 연결에 대한 자세한 내용은 [이 링크](https://docs.microsoft.com/graph/data-connect-concept-overview)를 참조하세요.
+Azure Data Factory와 통합 [Microsoft Graph 데이터 연결](https://docs.microsoft.com/graph/data-connect-concept-overview), 다양 한 Office 365에서 조직 데이터를 Azure로 확장 가능한 방식으로 테 넌 트 및 분석 응용 프로그램 빌드를 가져올 수 있습니다 및 기반 통찰력을 얻기 이러한 중요 데이터 자산이 있습니다. Privileged Access Management와 통합하면 Office 365의 큐레이팅된 중요한 데이터에 대한 보안 액세스 제어가 가능합니다.  참조 하십시오 [이 링크](https://docs.microsoft.com/graph/data-connect-concept-overview) Microsoft Graph 데이터에 대 한 개요에 대 한 연결 및 참조 [이 링크](https://docs.microsoft.com/graph/data-connect-policies#licensing) 라이선스 정보입니다.
 
 이 문서에서는 Azure Data Factory의 복사 작업을 사용하여 Office 365에서 데이터를 복사하는 방법에 대해 설명합니다. 이 문서는 복사 작업에 대한 일반적인 개요를 제공하는 [복사 작업 개요](copy-activity-overview.md) 문서를 기반으로 합니다.
 
 ## <a name="supported-capabilities"></a>지원되는 기능
+주소록 연락처, 행사 일정, 전자 메일 메시지, 사용자 정보, 사서함 설정을 사용 하도록 설정 하는 Exchange 전자 메일 사서함에서 ADF Office 365 커넥터 및 Microsoft Graph 데이터 연결 다양 한 유형의 데이터 집합의 확장 수집에 사용 하도록 설정 하 고 등등입니다.  참조 [여기](https://docs.microsoft.com/graph/data-connect-datasets) 사용 가능한 데이터 집합의 전체 목록을 볼 수 있습니다.
 
 이제 단일 복사 작업 내에서 할 수 있습니다 **에 Office 365에서 데이터 복사 [Azure Blob Storage](connector-azure-blob-storage.md)를 [Azure 데이터 레이크 저장소 Gen1](connector-azure-data-lake-store.md), 및 [Azure Data Lake 저장소 Gen2 ](connector-azure-data-lake-storage.md) JSON 형식으로** (setOfObjects 형식). Office 365를 다른 유형의 데이터 저장소나 다른 형식으로 로드하려면, 첫 번째 복사 작업을 후속 복사 작업과 연결하여 [지원되는 ADF 대상 저장소](copy-activity-overview.md#supported-data-stores-and-formats)로 데이터를 추가로 로드할 수 있습니다("지원되는 데이터 저장소 및 형식" 표의 "싱크로 지원" 열 참조).
 
@@ -41,8 +42,8 @@ Office 365에서 Azure로 데이터를 복사하려면 다음 필수 구성 요�
 - Office 365 테넌트 관리자가 [여기](https://docs.microsoft.com/graph/data-connect-get-started)에 설명된 온보딩 작업을 완료해야 합니다.
 - Azure Active Directory에서 Azure AD 웹 애플리케이션을 만들고 구성합니다.  지침에 대해서는 [Azure AD 애플리케이션 만들기](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)를 참조하세요.
 - Office 365에 대한 연결된 서비스를 정의하는 데 사용되므로 다음 값을 적어둡니다.
-    - 테넌트 ID. 지침은 [테넌트 ID 가져오기](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id)를 참조하세요.
-    - 애플리케이션 ID 및 인증 키.  지침은 [애플리케이션 ID 및 인증 키 가져오기](../active-directory/develop/howto-create-service-principal-portal.md#get-application-id-and-authentication-key)를 참조하세요.
+    - 테넌트 ID. 지침은 [테넌트 ID 가져오기](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)를 참조하세요.
+    - 애플리케이션 ID 및 인증 키.  지침은 [애플리케이션 ID 및 인증 키 가져오기](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)를 참조하세요.
 - Azure AD 웹 애플리케이션의 소유자로 데이터 액세스를 요청할 사용자 ID를 추가(Azure AD 웹 애플리케이션 &gt; 설정 &gt; 소유자 &gt; 소유자 추가를 통해)합니다. 
     - 사용자 ID는 데이터를 가져오는 Office 365 조직에 소속되어 있어야 하며 게스트 사용자여서는 안 됩니다.
 
@@ -78,11 +79,11 @@ Office 365 연결된 서비스에 대해 다음 속성이 지원됩니다.
 
 | 자산 | 설명 | 필수 |
 |:--- |:--- |:--- |
-| type | 형식 속성을 다음으로 설정해야 합니다. **Office365** | 예. |
-| office365TenantId | Office 365 계정이 속하는 Azure 테넌트 ID입니다. | 예. |
-| servicePrincipalTenantId | Azure AD 웹 애플리케이션이 상주하는 테넌트 정보를 지정합니다. | 예. |
+| type | 형식 속성을 다음으로 설정해야 합니다. **Office365** | 예 |
+| office365TenantId | Office 365 계정이 속하는 Azure 테넌트 ID입니다. | 예 |
+| servicePrincipalTenantId | Azure AD 웹 애플리케이션이 상주하는 테넌트 정보를 지정합니다. | 예 |
 | servicePrincipalId | 애플리케이션의 클라이언트 ID를 지정합니다. | 예 |
-| servicePrincipalKey | 애플리케이션의 키를 지정합니다. 이 필드를 SecureString으로 표시하여 Data Factory에서 안전하게 저장합니다. | 예. |
+| servicePrincipalKey | 애플리케이션의 키를 지정합니다. 이 필드를 SecureString으로 표시하여 Data Factory에서 안전하게 저장합니다. | 예 |
 | connectVia | 데이터 저장소에 연결하는 데 사용할 Integration Runtime입니다.  지정하지 않으면 기본 Azure Integration Runtime을 사용합니다. | 아닙니다. |
 
 >[!NOTE]
@@ -118,8 +119,8 @@ Office 365의 데이터를 복사하려는 경우 다음과 같은 속성이 지
 
 | 자산 | 설명 | 필수 |
 |:--- |:--- |:--- |
-| type | 데이터 세트의 형식 속성을 다음으로 설정해야 합니다. **Office365Table** | 예. |
-| tableName | Office 365에서 추출할 데이터 세트의 이름입니다. 추출할 수 있는 Office 365 데이터 세트 목록은 [여기](https://docs.microsoft.com/graph/data-connect-datasets#datasets)를 참조하세요. | 예. |
+| type | 데이터 세트의 형식 속성을 다음으로 설정해야 합니다. **Office365Table** | 예 |
+| tableName | Office 365에서 추출할 데이터 세트의 이름입니다. 추출할 수 있는 Office 365 데이터 세트 목록은 [여기](https://docs.microsoft.com/graph/data-connect-datasets#datasets)를 참조하세요. | 예 |
 | allowedGroups | 그룹 선택 조건자입니다.  이 속성을 사용에 대 한 데이터를 검색할 수는 최대 10 개의 사용자 그룹을 선택 합니다.  지정 된 그룹이 있는 경우 데이터는 전체 조직에 대해 반환 됩니다. | 아닙니다. |
 | userScopeFilterUri | 때 `allowedGroups` 속성을 지정 하지 않으면 Office 365에서 추출 하는 특정 행을 필터링 하는 전체 테 넌 트에 적용 되는 조건자 식을 사용할 수 있습니다. 조건자와 일치 해야 Microsoft Graph Api 쿼리 형식의 예를 들어 `https://graph.microsoft.com/v1.0/users?$filter=Department eq 'Finance'`합니다. | 아닙니다. |
 | dateFilterColumn | 날짜/시간 필터 열의 이름입니다. 데이터가 추출 되는 Office 365에 대 한 시간 범위를 제한 하려면이 속성을 사용 합니다. | 데이터 집합에 하나 이상의 날짜/시간 열 이면 yes입니다. 참조할 [여기](https://docs.microsoft.com/graph/data-connect-filtering#filtering) 이 날짜/시간 필터를 필요로 하는 데이터 집합의 목록은 합니다. |

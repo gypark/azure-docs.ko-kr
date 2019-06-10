@@ -5,17 +5,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.date: 10/19/2018
+ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1084a3e546a234739fbede46612dce96537c7d4a
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: d6b90ff82601acca1249c7d8c353944e39e89f95
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65950644"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66473793"
 ---
 # <a name="azure-ad-connect--adconnectivitytools-powershell-reference"></a>Azure AD Connect:  ADConnectivityTools PowerShell 참조
 
@@ -33,10 +33,10 @@ ms.locfileid: "65950644"
 Confirm-DnsConnectivity [-Forest] <String> [-DCs] <Array> [-ReturnResultAsPSObject] [<CommonParameters>]
 ```
 
-### <a name="description"></a>설명
+### <a name="description"></a>DESCRIPTION
 
 로컬 DNS 연결 테스트를 실행합니다.
-Active Directory connector를 구성 하려면 사용자도이 포리스트에 연결 된 도메인 컨트롤러와 같이 연결 하려고 하는 포리스트에 대 한 이름 확인 둘 다 있어야 합니다.
+Active Directory connector를 구성 하려면 사용자도이 포리스트에 연결 된 도메인 컨트롤러와 같이 연결 되려고 포리스트에 대 한 이름 해상도 모두 있어야 합니다.
 
 ### <a name="examples"></a>예제
 
@@ -120,7 +120,7 @@ Accept wildcard characters: False
 Confirm-ForestExists [-Forest] <String> [<CommonParameters>]
 ```
 
-### <a name="description"></a>설명
+### <a name="description"></a>DESCRIPTION
 
 DNS 서버에서 포리스트와 연결된 IP 주소를 쿼리합니다.
 
@@ -175,7 +175,7 @@ Confirm-FunctionalLevel -Forest <String> [-RunWithCurrentlyLoggedInUserCredentia
 Confirm-FunctionalLevel -ForestFQDN <Forest> [-RunWithCurrentlyLoggedInUserCredentials] [<CommonParameters>]
 ```
 
-### <a name="description"></a>설명
+### <a name="description"></a>DESCRIPTION
 
 AD 포리스트 기능 수준이 지정된 MinAdForestVersion(WindowsServer2003) 이상인지 확인합니다.
 계정(도메인\사용자 이름) 및 암호를 요청할 수 있습니다.
@@ -268,7 +268,7 @@ Accept wildcard characters: False
 Confirm-NetworkConnectivity [-DCs] <Array> [-SkipDnsPort] [-ReturnResultAsPSObject] [<CommonParameters>]
 ```
 
-### <a name="description"></a>설명
+### <a name="description"></a>DESCRIPTION
 
 로컬 네트워크 연결 테스트를 실행합니다.
 
@@ -309,8 +309,8 @@ Accept wildcard characters: False
 
 #### <a name="-skipdnsport"></a>-SkipDnsPort
 
-사용자는 AD 사이트에서 제공 하는 DNS 서비스를 사용 하지 않는 경우 / 로그온 DC를 해당 수 검사 포트 53을 건너뜁니다.
-사용자가 여전히 _.ldap._tcp.\<forestfqdn\>을 확인할 수 있어야 Active Directory 커넥터 구성이 성공합니다.
+사용자는 AD 사이트에서 제공 하는 DNS 서비스를 사용 하지 경우 / 로그온 DC를 해당 수 검사 포트 53을 건너뜁니다.
+여전히 사용자 _.ldap._tcp을 확인할 수 여야 합니다. \<forestfqdn\> Active Directory Connector 구성을 완료 하려면 순서 대로 합니다.
 
 ```yml
 Type: SwitchParameter
@@ -358,7 +358,7 @@ Accept wildcard characters: False
 Confirm-TargetsAreReachable [-Forest] <String> [-DCs] <Array> [<CommonParameters>]
 ```
 
-### <a name="description"></a>설명
+### <a name="description"></a>DESCRIPTION
 
 "ping" 테스트(컴퓨터에서 네트워크 및/또는 인터넷을 통해 대상 컴퓨터에 연결할 수 있는지 여부)를 실행합니다.
 
@@ -435,7 +435,7 @@ Confirm-ValidDomains [-Forest <String>] [-RunWithCurrentlyLoggedInUserCredential
 Confirm-ValidDomains -ForestFQDN <Forest> [-RunWithCurrentlyLoggedInUserCredentials] [<CommonParameters>]
 ```
 
-### <a name="description"></a>설명
+### <a name="description"></a>DESCRIPTION
 
 DomainGuid 및 DomainDN을 검색하려고 시도하여 가져온 포리스트 FQDN의 모든 도메인에 연결할 수 있는지 확인합니다.
 계정(도메인\사용자 이름) 및 암호를 요청할 수 있습니다.
@@ -527,7 +527,7 @@ Accept wildcard characters: False
 Confirm-ValidEnterpriseAdminCredentials [-RunWithCurrentlyLoggedInUserCredentials] [<CommonParameters>]
 ```
 
-### <a name="description"></a>설명
+### <a name="description"></a>DESCRIPTION
 
 제공된 사용자에게 엔터프라이즈 관리자 자격 증명이 있는지 검색합니다.
 계정(도메인\사용자 이름) 및 암호를 요청할 수 있습니다.
@@ -582,7 +582,7 @@ Get-DomainFQDNData [[-DomainFQDNDataType] <String>] [-RunWithCurrentlyLoggedInUs
  [-ReturnExceptionOnError] [<CommonParameters>]
 ```
 
-### <a name="description"></a>설명
+### <a name="description"></a>DESCRIPTION
 
 제공된 자격 증명에서 domainFQDN 개체를 가져오려고 시도합니다.
 domainFQDN이 유효한 경우 사용자의 선택에 따라 DomainFQDNName 또는 RootDomainName이 반환됩니다.
@@ -670,7 +670,7 @@ Accept wildcard characters: False
 Get-ForestFQDN [-Forest] <String> [-RunWithCurrentlyLoggedInUserCredentials] [<CommonParameters>]
 ```
 
-### <a name="description"></a>설명
+### <a name="description"></a>DESCRIPTION
 
 제공된 자격 증명에서 ForestFQDN을 가져오려고 시도합니다.
 계정(도메인\사용자 이름) 및 암호를 요청할 수 있습니다.
@@ -741,7 +741,7 @@ Start-ConnectivityValidation [-Forest] <String> [-AutoCreateConnectorAccount] <B
  [<CommonParameters>]
 ```
 
-### <a name="description"></a>설명
+### <a name="description"></a>DESCRIPTION
 
 AD 자격 증명이 유효한지 확인하는 사용 가능한 모든 메커니즘을 실행합니다.
 
@@ -824,7 +824,7 @@ Start-NetworkConnectivityDiagnosisTools [[-Forest] <String>] [-Credentials] <PSC
  [-ValidCredentials] [<CommonParameters>]
 ```
 
-### <a name="description"></a>설명
+### <a name="description"></a>DESCRIPTION
 
 로컬 네트워크 연결 테스트를 실행합니다.
 

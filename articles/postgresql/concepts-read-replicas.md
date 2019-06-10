@@ -5,17 +5,17 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: ce99e03cbd767b5e25871397ea9ae9a301132ab6
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.date: 06/05/2019
+ms.openlocfilehash: 75a3c8a9912fe9ace70e411983996167da755128
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510970"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734644"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL-단일 서버에서 복제본 읽기
 
-읽기 복제본 기능을 사용하면 Azure Database for PostgreSQL 서버에서 읽기 전용 서버로 데이터를 복제할 수 있습니다. 최대 5 개의 복제본으로 마스터 서버에서 복제할 수 있습니다. 복제본은 PostgreSQL 엔진 기본 복제 기술을 사용하여 비동기식으로 업데이트 됩니다.
+읽기 복제본 기능을 사용하면 Azure Database for PostgreSQL 서버에서 읽기 전용 서버로 데이터를 복제할 수 있습니다. 최대 5개의 복제본으로 마스터 서버에서 복제할 수 있습니다. 복제본은 PostgreSQL 엔진 기본 복제 기술을 사용하여 비동기식으로 업데이트 됩니다.
 
 > [!IMPORTANT]
 > 마스터 서버와 동일한 지역 또는 선택한 다른 Azure 지역에 읽기 복제본을 만들 수 있습니다. 지역 간 복제는 현재 공개 미리 보기로 제공 됩니다.
@@ -40,10 +40,9 @@ ms.locfileid: "65510970"
 
 복제본 만들기 워크플로를 시작하면 빈 Azure Database for PostgreSQL 서버가 만들어집니다. 새 서버는 마스터 서버에 있는 데이터로 채워집니다. 생성 시간은 마스터의 데이터 양과 지난 주 전체 백업 이후의 시간에 따라 달라집니다. 시간은 몇 분에서 몇 시간까지 걸릴 수 있습니다.
 
-읽기 복제본 기능은 PostgreSQL의 물리적 복제(논리 복제 아님)를 사용합니다. 복제 슬롯을 사용하는 스트리밍 복제가 기본 작동 모드입니다. 필요한 경우 따라잡기 위해 로그 전달이 사용됩니다.
+저장소에 대 한 모든 복제본 사용 가능 [자동 증가](concepts-pricing-tiers.md#storage-auto-grow)합니다. 자동 증가 기능은, 복제 되는 데이터를 계속 확인 하 고 부족 저장소 오류 인해 복제의 중단을 방지 하는 복제본입니다.
 
-> [!NOTE]
-> 서버에 스토리지 경고가 설정되어 있지 않은 경우 스토리지 경고를 설정하는 것이 좋습니다. 이 경고는 서버가 스토리지 용량 한도에 도달하면 이를 알려주며 복제에 영향을 미칩니다.
+읽기 복제본 기능은 PostgreSQL의 물리적 복제(논리 복제 아님)를 사용합니다. 복제 슬롯을 사용하는 스트리밍 복제가 기본 작동 모드입니다. 필요한 경우 따라잡기 위해 로그 전달이 사용됩니다.
 
 [Azure Portal에서 읽기 복제본을 만드는 방법](howto-read-replicas-portal.md)을 알아봅니다.
 
@@ -61,17 +60,15 @@ psql -h myreplica.postgres.database.azure.com -U myadmin@myreplica -d postgres
 프롬프트가 표시되면 사용자 계정의 암호를 입력합니다.
 
 ## <a name="monitor-replication"></a>복제 모니터링
-Azure Database for PostgreSQL은 Azure Monitor에 **복제본 간 최대 지연 시간** 메트릭을 제공합니다. 이 메트릭은 마스터 서버에서만 사용할 수 있습니다. 이 메트릭은 마스터와 가장 오래 지연된 복제본 간의 지연 시간을 바이트 단위로 보여 줍니다. 
+Azure Database for PostgreSQL 복제 모니터링에 대 한 두 가지 메트릭을 제공 합니다. 두 메트릭은 **복제본 간에 최대 지연** 하 고 **복제본 지연**합니다. 이러한 메트릭을 보는 방법에 알아보려면 참조를 **복제본 모니터링** 섹션을 [복제본 방법 문서를 읽어보세요](howto-read-replicas-portal.md)합니다.
 
-Azure Database for PostgreSQL은 Azure Monitor에 **복제본 지연 시간** 메트릭도 제공합니다. 이 메트릭은 복제본에만 사용할 수 있습니다. 
+합니다 **복제본 간에 지연 최대** 메트릭 지연을 마스터와 대부분 지연 복제본 간에 바이트를 표시 합니다. 이 메트릭은 마스터 서버에서만 사용할 수 있습니다.
 
-메트릭은 `pg_stat_wal_receiver` 보기에서 계산됩니다.
+합니다 **복제본 지연** 메트릭 마지막 트랜잭션 재생 이후 시간을 보여 줍니다. 마스터 서버에서 트랜잭션이 발생하지 않으면 메트릭은 이 지연 시간을 반영합니다. 이 메트릭은 복제본 서버에만 제공 됩니다. 복제 지연 시간에서 계산 되는 `pg_stat_wal_receiver` 보기:
 
 ```SQL
 EXTRACT (EPOCH FROM now() - pg_last_xact_replay_timestamp());
 ```
-
-지연 시간 메트릭은 마지막으로 재생된 트랜잭션 이후의 시간을 보여 줍니다. 마스터 서버에서 트랜잭션이 발생하지 않으면 메트릭은 이 지연 시간을 반영합니다.
 
 복제본 지연 시간이 워크로드에 적합하지 않은 값에 도달하면 알리도록 경고를 설정하십시오. 
 

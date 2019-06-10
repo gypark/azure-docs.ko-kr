@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3fcc1926d580007750e7e1f5a3de06ef6578e1b5
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: df05bd984667283b0ccc143ba14fff6b35d69144
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65957460"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66753168"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>자동화 된 기계 학습 실험에서 Python 구성
 
@@ -59,6 +59,14 @@ ms.locfileid: "65957460"
 [Naive Bayes](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)|
 [SGD(Stochastic Gradient Descent)](https://scikit-learn.org/stable/modules/sgd.html#sgd)|
 
+사용 하 여는 `task` 의 매개 변수는 `AutoMLConfig` 실험 형식을 지정 하는 생성자입니다.
+
+```python
+from azureml.train.automl import AutoMLConfig
+
+# task can be one of classification, regression, forecasting
+automl_config = AutoMLConfig(task="classification")
+```
 
 ## <a name="data-source-and-format"></a>데이터 원본 및 형식
 자동화된 Machine Learning은 로컬 데스크톱 또는 Azure Blob Storage와 같은 클라우드의 데이터를 지원합니다. 데이터는 scikit-learn 지원 데이터 형식으로 읽을 수 있습니다. 데이터를
@@ -121,7 +129,7 @@ automl_config = AutoMLConfig(****, data_script=project_folder + "/get_data.py", 
 ---|---|---|---
 X | pandas 데이터 프레임 또는 numpy 배열 | data_train, label, columns |  학습할 모든 기능입니다.
 y | pandas 데이터 프레임 또는 numpy 배열 |   label   | 학습할 데이터에 레이블을 지정합니다. 분류의 경우 정수 배열이어야 합니다.
-X_valid | pandas 데이터 프레임 또는 numpy 배열   | data_train, label | _선택 사항_ 유효성을 검사할 모든 기능입니다. 지정하지 않으면 X가 학습과 유효성 검사 간에 분할됩니다.
+X_valid | pandas 데이터 프레임 또는 numpy 배열   | data_train, label | _선택적_ 데이터 유효성 검사 집합을 형성 하는 기능입니다. 지정하지 않으면 X가 학습과 유효성 검사 간에 분할됩니다.
 y_valid |   pandas 데이터 프레임 또는 numpy 배열 | data_train, label | _선택 사항_ 유효성을 검사할 레이블 데이터입니다. 지정하지 않으면 y가 학습과 유효성 검사 간에 분할됩니다.
 sample_weight | pandas 데이터 프레임 또는 numpy 배열 |   data_train, label, columns| _선택 사항_ 각 샘플에 대한 가중치입니다. 데이터 요소에 대해 서로 다른 가중치를 할당하려는 경우에 사용합니다.
 sample_weight_valid | pandas 데이터 프레임 또는 numpy 배열 | data_train, label, columns |    _선택 사항_ 각 유효성 검사 샘플에 대한 가중치입니다. 지정하지 않으면 sample_weight가 학습과 유효성 검사 간에 분할됩니다.
@@ -129,30 +137,6 @@ data_train |    pandas 데이터 프레임 |  X, y, X_valid, y_valid |    학습
 label | 문자열  | X, y, X_valid, y_valid |  레이블을 나타내는 data_train의 열입니다.
 열 | 문자열 배열  ||  _선택 사항_ 기능에 사용할 열의 허용 목록입니다.
 cv_splits_indices   | 정수 배열 ||  _선택 사항_ 교차 유효성 검사를 위해 데이터를 분할할 인덱스 목록입니다.
-
-### <a name="load-and-prepare-data-using-data-prep-sdk"></a>로드 및 데이터 준비 SDK를 사용 하 여 데이터 준비
-자동화 된 기계 학습 실험 데이터 로드를 지원 하 고 데이터 준비 SDK를 사용 하 여 변환 합니다. SDK를 사용하면 다음 기능을 사용할 수 있습니다.
-
->* 구문 분석 매개 변수 유추(인코딩, 구분 기호, 헤더)를 사용하여 다양한 파일 형식에서 로드
->* 파일 로드 동안 유추를 사용한 형식 변환
->* MS SQL Server 및 Azure Data Lake Storage에 대한 연결 지원
->* 식을 사용하여 열 추가
->* 누락 값 입력
->* 예제별 열 파생
->* 필터링
->* 사용자 지정 Python 변환
-
-data prep sdk에 대해 알아보려면 [모델링을 위한 데이터 준비 방법 문서](how-to-load-data.md)를 참조하세요.
-다음은 data prep sdk를 사용하여 데이터를 로드하는 예제입니다.
-```python
-# The data referenced here was pulled from `sklearn.datasets.load_digits()`.
-simple_example_data_root = 'https://dprepdata.blob.core.windows.net/automl-notebook-data/'
-X = dprep.auto_read_file(simple_example_data_root + 'X.csv').skip(1)  # Remove the header row.
-# You can use `auto_read_file` which intelligently figures out delimiters and datatypes of a file.
-
-# Here we read a comma delimited file and convert all columns to integers.
-y = dprep.read_csv(simple_example_data_root + 'y.csv').to_long(dprep.ColumnSelector(term='.*', use_regex = True))
-```
 
 ## <a name="train-and-validation-data"></a>데이터 학습 및 유효성 검사
 
@@ -174,7 +158,7 @@ get_data()를 통하거나 `AutoMLConfig` 메서드에서 직접 별도의 학�
 
 다음으로, 모델을 학습할 위치를 결정합니다. 자동화된 Machine Learning 실험은 다음 컴퓨팅 옵션에서 실행할 수 있습니다.
 *   로컬 데스크톱 또는 랩톱과 같은 로컬 머신 - 일반적으로 데이터 세트가 작고 아직 탐색 단계에 있는 경우입니다.
-*   클라우드의 원격 머신 - [Azure Machine Learning Managed Compute](concept-azure-machine-learning-architecture.md#managed-and-unmanaged-compute-targets)는 Azure Virtual Machines 클러스터에서 Machine Learning 모델을 학습할 수 있도록 하는 관리형 서비스입니다.
+*   클라우드의 원격 머신 - [Azure Machine Learning Managed Compute](concept-compute-target.md#amlcompute)는 Azure Virtual Machines 클러스터에서 Machine Learning 모델을 학습할 수 있도록 하는 관리형 서비스입니다.
 
 로컬 및 원격 컴퓨팅 대상이 있는 예제 노트에 대해서는 [GitHub 사이트](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning)를 참조하세요.
 
@@ -324,7 +308,7 @@ best_run, fitted_model = automl_run.get_output()
 
 + API 1: `get_engineered_feature_names()` 엔지니어링 된 기능 이름 목록을 반환 합니다.
 
-  사용 현황:
+  Usage:
   ```python
   fitted_model.named_steps['timeseriestransformer']. get_engineered_feature_names ()
   ```
@@ -340,7 +324,7 @@ best_run, fitted_model = automl_run.get_output()
 
 + API 2: `get_featurization_summary()` 기능화 (featurization) 모든 입력된 기능에 대 한 요약을 반환 합니다.
 
-  사용 현황:
+  Usage:
   ```python
   fitted_model.named_steps['timeseriestransformer'].get_featurization_summary()
   ```
@@ -372,7 +356,7 @@ best_run, fitted_model = automl_run.get_output()
     'Tranformations': ['DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime']}]
   ```
 
-   각 항목이 나타내는 의미는 다음과 같습니다.
+   위치:
 
    |출력|정의|
    |----|--------|
@@ -501,6 +485,8 @@ from azureml.widgets import RunDetails
 RunDetails(local_run).show()
 ```
 ![기능 중요도 그래프](./media/how-to-configure-auto-train/feature-importance.png)
+
+모델 설명 및 기능 중요도 외부 자동화 된 기계 학습에서 SDK의 다른 영역에서 사용할 수 있습니다 하는 방법에 대 한 자세한 내용은 참조는 [개념](machine-learning-interpretability-explainability.md) interpretability 문서.
 
 ## <a name="next-steps"></a>다음 단계
 

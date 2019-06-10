@@ -4,14 +4,14 @@ description: Azure Cosmos DB의 인덱싱 정책 관리 방법을 알아봅니�
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 05/06/2019
+ms.date: 05/23/2019
 ms.author: thweiss
-ms.openlocfilehash: 48d67c765a8a76a6058592f59eb61770e2f23df5
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 05fd369cfebba03c814507f82755fa6cb6a89400
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65068668"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66386793"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB의 인덱싱 정책 관리
 
@@ -22,6 +22,9 @@ Azure Cosmos DB에서 데이터는 각 컨테이너에 대해 정의된 [인덱�
 - SDK 중 하나를 사용하여
 
 [인덱싱 정책 업데이트](index-policy.md#modifying-the-indexing-policy)는 인덱스 변환을 트리거합니다. 이 변환의 진행률을 SDK에서 추적할 수도 있습니다.
+
+> [!NOTE]
+> SDK 및 포털 업그레이드의 일환으로 새 컨테이너에 배포된 새 인덱스 레이아웃에 맞게 인덱스 정책을 개선하는 중입니다. 이 새 레이아웃을 사용하면 모든 기본 데이터 형식이 전체 자릿수(-1)의 범위로 인덱싱됩니다. 따라서 인덱스 종류 및 전체 자릿수가 사용자에게 더 이상 공개되지 않습니다. 나중에 사용자는 includedPaths 섹션에 경로를 추가하고 indexKinds 및 전체 자릿수를 무시하기만 하면 됩니다. 이러한 변경 사항은 성능에 영향을 주지 않으며, 동일한 구문을 사용하여 인덱싱 정책을 계속 업데이트할 수 있습니다. 기존 문서의 모든 샘플을 계속 사용하여 인덱스 정책을 업데이트할 수 있습니다.
 
 ## <a name="use-the-azure-portal"></a>Azure Portal 사용
 
@@ -164,7 +167,7 @@ response = client.ReplaceContainer(containerPath, container)
 ### <a name="opt-out-policy-to-selectively-exclude-some-property-paths"></a>일부 속성 경로를 선택적으로 제외하는 옵트아웃 정책
 ```
     {
-        "indexingPolicy": "consistent",
+        "indexingMode": "consistent",
         "includedPaths": [
             {
                 "path": "/*",
@@ -198,7 +201,7 @@ response = client.ReplaceContainer(containerPath, container)
 ### <a name="opt-in-policy-to-selectively-include-some-property-paths"></a>일부 속성 경로를 선택적으로 포함하는 옵트인 정책
 ```
     {
-        "indexingPolicy": "consistent",
+        "indexingMode": "consistent",
         "includedPaths": [
             {
                 "path": "/path/to/included/property/?",
@@ -232,7 +235,7 @@ response = client.ReplaceContainer(containerPath, container)
 ### <a name="using-a-spatial-index-on-a-specific-property-path-only"></a>특정 속성 경로에 대해서만 공간 인덱스 사용
 ```
     {
-        "indexingPolicy": "consistent",
+        "indexingMode": "consistent",
         "includedPaths": [
             {
                 "path": "/*",
@@ -277,7 +280,7 @@ response = client.ReplaceContainer(containerPath, container)
 ### <a name="no-indexing"></a>인덱싱 안 함
 ```
     {
-        "indexingPolicy": "none"
+        "indexingMode": "none"
     }
 ```
 

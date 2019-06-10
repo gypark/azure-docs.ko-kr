@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: jehollan
-ms.openlocfilehash: 75987e7cba9f373af5a434de9f273948c3c9ae75
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: dab7561db8f223bff87f41ef756605359c3478e4
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544739"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66492708"
 ---
 # <a name="azure-functions-premium-plan-preview"></a>Azure Functions Premium 계획 (미리 보기)
 
@@ -56,7 +56,7 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 
 ### <a name="private-network-connectivity"></a>개인 네트워크 연결
 
-프리미엄 계획에 배포 하는 azure Functions는 활용 [웹 앱에 대 한 새 VNet 통합](../app-service/web-sites-integrate-with-vnet.md#new-vnet-integration)합니다.  구성 되 면 앱 VNet 내의 리소스와 통신할 수 또는 서비스 끝점을 통해 보호 합니다.  IP 제한 들어오는 트래픽을 제한 하기 위해 앱에서 사용할 수 있습니다.
+프리미엄 계획에 배포 하는 azure Functions는 활용 [웹 앱에 대 한 새 VNet 통합](../app-service/web-sites-integrate-with-vnet.md)합니다.  구성 되 면 앱 VNet 내의 리소스와 통신할 수 또는 서비스 끝점을 통해 보호 합니다.  IP 제한 들어오는 트래픽을 제한 하기 위해 앱에서 사용할 수 있습니다.
 
 프리미엄 계획에서 함수 앱으로 서브넷을 할당 때 잠재적인 각 인스턴스에 대 한 충분 한 IP 주소를 사용 하 여 서브넷을 해야 합니다. 인스턴스의 최대 수는 미리 보기 기간 동안 다를 수 있습니다, 있지만 100 개 이상의 사용 가능한 주소를 사용 하 여 IP 블록이 필요 합니다.
 
@@ -91,7 +91,7 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 
 ### <a name="available-instance-skus"></a>사용 가능한 인스턴스 Sku
 
-확장성 계획을 만들 때 세 가지 인스턴스 크기를 선택할 수 있습니다.  총 코어 수 및 사용 된 초당 메모리에 대 한 청구 됩니다.  앱에 자동으로 규모를 확장할 수 여러 인스턴스가 필요에 따라 합니다.  
+만들거나 계획 크기 조정 하는 경우 세 인스턴스 크기를 선택할 수 있습니다.  총 코어 수 및 사용 된 초당 메모리에 대 한 청구 됩니다.  앱에 자동으로 규모를 확장할 수 여러 인스턴스가 필요에 따라 합니다.  
 
 |SKU|코어 수|메모리|Storage|
 |--|--|--|--|

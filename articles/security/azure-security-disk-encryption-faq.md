@@ -5,14 +5,14 @@ author: msmbaldwin
 ms.service: security
 ms.topic: article
 ms.author: mbaldwin
-ms.date: 04/16/2019
+ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6fd9ce1947b8207aced44204fc2989622a1998f2
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 149452bd7d43ce46f320b9bae63a6f9cd48d98d4
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65761915"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66730691"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>IaaS VM용 Azure Disk Encryption FAQ
 
@@ -43,18 +43,18 @@ Azure Disk Encryption은 [A, D, DS, G, GS 및 F](https://azure.microsoft.com/pri
 
 Azure에서 되지 보증 하는 Linux 서버 배포판은 Azure Disk Encryption을 지원 하지 않습니다 및 해당 하는 행위는의 다음 배포판 및 버전에만 Azure Disk Encryption 지원 됩니다.
 
-| Linux 배포 | Version | 암호화에 지원되는 볼륨 유형|
+| Linux 배포 | 버전 | 암호화에 지원되는 볼륨 유형|
 | --- | --- |--- |
 | Ubuntu | 18.04| OS 및 데이터 디스크 |
 | Ubuntu | 16.04| OS 및 데이터 디스크 |
 | Ubuntu | 14.04.5</br>[4.15 이상으로 업데이트된 Azure 튜닝 커널 포함](azure-security-disk-encryption-tsg.md#bkmk_Ubuntu14) | OS 및 데이터 디스크 |
-| RHEL | 7.6 | OS 및 데이터 디스크* |
-| RHEL | 7.5 | OS 및 데이터 디스크* |
-| RHEL | 7.4 | OS 및 데이터 디스크* |
-| RHEL | 7.3 | OS 및 데이터 디스크* |
-| RHEL | 7.2 | OS 및 데이터 디스크* |
-| RHEL | 6.8 | 데이터 디스크* |
-| RHEL | 6.7 | 데이터 디스크* |
+| RHEL | 7.6 | OS 및 데이터 디스크 (아래 참고 참조) |
+| RHEL | 7.5 | OS 및 데이터 디스크 (아래 참고 참조) |
+| RHEL | 7.4 | OS 및 데이터 디스크 (아래 참고 참조) |
+| RHEL | 7.3 | OS 및 데이터 디스크 (아래 참고 참조) |
+| RHEL | 7.2 | OS 및 데이터 디스크 (아래 참고 참조) |
+| RHEL | 6.8 | 데이터 디스크 (아래 참고 참조) |
+| RHEL | 6.7 | 데이터 디스크 (아래 참고 참조) |
 | CentOS | 7.5 | OS 및 데이터 디스크 |
 | CentOS | 7.4 | OS 및 데이터 디스크 |
 | CentOS | 7.3 | OS 및 데이터 디스크 |
@@ -65,7 +65,7 @@ Azure에서 되지 보증 하는 Linux 서버 배포판은 Azure Disk Encryption
 | SLES | 12-SP3 | 데이터 디스크 |
 
 > [!NOTE]
-> 새 ADE 구현은 RHEL OS 및 데이터 디스크 RHEL7 종 량 제 이미지에 대 한 지원 됩니다. ADE는 현재 RHEL BYOS(Bring-Your-Own-Subscription) 이미지에서 지원되지 않습니다. 참조 하세요 합니다 [Linux 용 Azure Disk Encryption](azure-security-disk-encryption-linux.md) 자세한 문서. _ _
+> 새 ADE 구현은 RHEL OS 및 데이터 디스크 RHEL7 종 량 제 이미지에 대 한 지원 됩니다. ADE는 현재 RHEL BYOS(Bring-Your-Own-Subscription) 이미지에서 지원되지 않습니다. 참조 [Linux 용 Azure Disk Encryption](azure-security-disk-encryption-linux.md) 자세한 내용은 합니다.
 
 ## <a name="how-can-i-start-using-azure-disk-encryption"></a>Azure Disk Encryption을 사용하기 시작하려면 어떻게 해야 하나요?
 
@@ -82,6 +82,9 @@ Azure에서 되지 보증 하는 Linux 서버 배포판은 Azure Disk Encryption
 ## <a name="how-do-i-rotate-secrets-or-encryption-keys"></a>암호 또는 암호화 키 회전 하는 방법
 
 암호를 회전, 디스크 암호화를 사용 하도록 원래 사용 했던 동일한 명령을 호출 하는 다른 키 자격 증명 모음을 지정 합니다. 주요 암호화 키를 회전 하려면 원래 사용 했던 디스크 암호화를 사용 하도록 설정 하려면 새 키 암호화를 지정 하는 동일한 명령을 호출 합니다. 
+
+>[!WARNING]
+> - 이전에 사용한 경우 [Azure AD 앱을 사용 하 여 Azure Disk Encryption](azure-security-disk-encryption-prerequisites-aad.md) 계속 해야이 VM을 암호화 하는 Azure AD 자격 증명을 지정 하 여 VM을 암호화 하려면이 옵션을 사용 합니다. 이는 지원되는 시나리오가 아니므로 이 암호화된 VM에서는 [Azure Disk Encryption](azure-security-disk-encryption-prerequisites.md)을 사용할 수 없습니다. 즉, 이 암호화된 VM을 위해 AAD 애플리케이션에서 전환하는 기능은 아직 지원되지 않습니다.
 
 ## <a name="how-do-i-add-or-remove-a-key-encryption-key-if-i-didnt-originally-use-one"></a>추가 하거나 어떻게 키 암호화 키를 처음 사용 하지 않은 경우 제거?
 

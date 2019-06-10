@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: iainfou
-ms.openlocfilehash: 1b983c534ab92218759175655bbf396788e4c39d
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 185c16e76094fe55a54fb17bef24fcd03d7b54f0
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956484"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475146"
 ---
 # <a name="preview---secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>미리 보기-통해 API 서버에 대 한 보안 액세스 권한이 Azure Kubernetes Service (AKS)에서 IP 주소 범위
 
@@ -21,9 +21,10 @@ Kubernetes API 서버는 리소스 만들기 또는 노드 수를 조정 하려�
 이 문서에서는 API 권한이 부여 된 서버의 IP 주소 범위를 사용 하 여 제어 평면에 대 한 요청을 제한 하는 방법을 보여 줍니다. 이 기능은 현재 미리 보기로 제공됩니다.
 
 > [!IMPORTANT]
-> AKS 미리 보기 기능은 셀프 서비스 및 옵트인 합니다. 미리 보기는 커뮤니티에서 의견 및 버그를 수집 하도록 제공 됩니다. 그러나 Azure 기술 지원 서비스에서 지원 되지 않습니다 됩니다. 클러스터를 만들거나 기존 클러스터에 이러한 기능을 추가 하는 경우에 기능이 더 이상 미리 보기 상태 이며 일반 공급 (GA) 라는 될 때까지 해당 클러스터 지원 되지 않습니다.
+> AKS 미리 보기 기능은 셀프 서비스, 옵트인 합니다. 커뮤니티에서 의견 및 버그를 수집 하도록 제공 됩니다. 미리 보기에서이 기능이 없는 프로덕션 사용 해야 합니다. 공개 미리 보기에서 기능 '최상의' 지원에 속합니다. AKS 기술 지원 팀의 지원 업무 시간은 태평양 표준 시간대 (PST)만 제공 됩니다. 추가 정보는 다음과 같은 지원 문서를 참조 하세요.
 >
-> 미리 보기 기능을 사용 하 여 문제가 발생 하면 [AKS GitHub 리포지토리에서 문제를 제기] [ aks-github] 버그 제목에 미리 보기 기능의 이름입니다.
+> * [AKS 지원 정책][aks-support-policies]
+> * [Azure 지원 FAQ][aks-faq]
 
 ## <a name="before-you-begin"></a>시작하기 전에
 
@@ -73,8 +74,6 @@ API 서버 권한이 부여 된 IP 범위를 구성할 때 다음과 같은 제�
 Kubernetes API 서버가 기본 Kubernetes Api 노출 되는 방법입니다. 이 구성 요소는 `kubectl` 또는 Kubernetes 대시보드와 같은 관리 도구에 대한 상호 작용을 제공합니다. AKS는 단일 테 넌 트 클러스터 마스터 전용된 API 서버를 사용 하 여 제공합니다. 기본적으로 API 서버에는 공용 IP 주소가 할당 됩니다 하 고 역할 기반 액세스 제어 (RBAC)를 사용 하 여 액세스를 제어 해야 합니다.
 
 그렇지 않으면 공개적으로 액세스 가능한 AKS 제어 평면에 대 한 보안 액세스를 API 서버를 사용 하 여 / IP 범위를 승인 합니다. 이러한 권한 있는 IP 범위 정의 된 IP 주소 범위 API 서버와 통신 하도록 허용 합니다. 이러한 권한 있는 IP 범위에 속하지 않은 IP 주소에서 API 서버에 대 한 요청을 차단 됩니다. RBAC를 사용 하 여 사용자 및 요청 작업을 만든 다음 권한을 부여할 계속 해야 합니다.
-
-권한 있는 IP 범위 기능을 사용 하려면 공용 IP 주소를 기본 NGINX 서비스를 배포 하 여 노드 풀에서 노출 됩니다. API 서버는이 권한이 있는 공용 IP 주소를 통해 노드 풀을 사용 하 여 통신합니다. 그런 다음 API 서버에 액세스할 수 있는 추가 IP 주소 범위를 정의 합니다.
 
 API 서버 및 기타 클러스터 구성 요소에 대 한 자세한 내용은 참조 하세요. [AKS에 대 한 Kubernetes 핵심 개념인][concepts-clusters-workloads]합니다.
 
@@ -242,7 +241,6 @@ az aks update \
 자세한 내용은 [응용 프로그램 및 AKS 클러스터에 대 한 보안 개념] [ concepts-security] 하 고 [클러스터 보안 및 AKS에서 업그레이드에 대 한 유용한] [ operator-best-practices-cluster-security].
 
 <!-- LINKS - external -->
-[aks-github]: https://github.com/azure/aks/issues]
 [azure-firewall-costs]: https://azure.microsoft.com/pricing/details/azure-firewall/
 
 <!-- LINKS - internal -->
@@ -265,3 +263,5 @@ az aks update \
 [az-network-firewall-ip-config-create]: /cli/azure/ext/azure-firewall/network/firewall/ip-config#ext-azure-firewall-az-network-firewall-ip-config-create
 [az-network-firewall-network-rule-create]: /cli/azure/ext/azure-firewall/network/firewall/network-rule#ext-azure-firewall-az-network-firewall-network-rule-create
 [az-network-route-table-route-create]: /cli/azure/network/route-table/route#az-network-route-table-route-create
+[aks-support-policies]: support-policies.md
+[aks-faq]: faq.md
